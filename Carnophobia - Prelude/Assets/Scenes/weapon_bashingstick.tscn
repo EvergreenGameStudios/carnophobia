@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7g5hmq1d5yy5"]
+
+[ext_resource type="Script" path="res://weapon_bashingstick.gd" id="1_u1ibk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb0vy"]
+size = Vector3(0.1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2bpkr"]
+size = Vector3(0.1, 1, 0.1)
+
+[sub_resource type="Animation" id="Animation_vffcf"]
+resource_name = "bashing_stick_attack"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.470628, 0, 0), Vector3(-1.30069, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i6ugn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Area3D/CollisionShape3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Area3D/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gax2s"]
+_data = {
+"RESET": SubResource("Animation_i6ugn"),
+"bashing_stick_attack": SubResource("Animation_vffcf")
+}
+
+[node name="Weapon" type="Node3D"]
+script = ExtResource("1_u1ibk")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_hb0vy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_2bpkr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area3D/CollisionShape3D"]
+root_node = NodePath("../../..")
+libraries = {
+"": SubResource("AnimationLibrary_gax2s")
+}
