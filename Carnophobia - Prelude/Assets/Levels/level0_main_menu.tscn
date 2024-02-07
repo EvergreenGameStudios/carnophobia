@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8frowxaealgp"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/UI/Button_NG.gd" id="1_p0f1a"]
+[ext_resource type="Script" path="res://Assets/Scripts/UI/Button_QUIT.gd" id="2_nfwmb"]
+[ext_resource type="Texture2D" uid="uid://de0x1mkhir6js" path="res://Assets/Textures/UI/carnophobia_title.png" id="3_p8s7r"]
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Button_NG" type="Button" parent="."]
+offset_left = 272.0
+offset_top = 429.0
+offset_right = 878.0
+offset_bottom = 460.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "New Game"
+script = ExtResource("1_p0f1a")
+
+[node name="Button_LG" type="Button" parent="."]
+offset_left = 271.0
+offset_top = 468.0
+offset_right = 877.0
+offset_bottom = 499.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Load Game"
+
+[node name="Button_OPT" type="Button" parent="."]
+offset_left = 272.0
+offset_top = 507.0
+offset_right = 878.0
+offset_bottom = 538.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Options"
+
+[node name="Button_QUIT" type="Button" parent="."]
+offset_left = 271.0
+offset_top = 543.0
+offset_right = 877.0
+offset_bottom = 574.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Quit"
+script = ExtResource("2_nfwmb")
+
+[node name="CarnophobiaTitle" type="Sprite2D" parent="."]
+position = Vector2(581, 242)
+scale = Vector2(1.66889, 1.58696)
+texture = ExtResource("3_p8s7r")
+
+[connection signal="pressed" from="Button_NG" to="Button_NG" method="_on_pressed"]
+[connection signal="pressed" from="Button_QUIT" to="Button_QUIT" method="_on_pressed"]
