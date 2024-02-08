@@ -3,10 +3,11 @@ extends CharacterBody3D
 
 @export var SPEED = 5.0
 @export var JUMP_VELOCITY = 4.5
-
+@onready var anim_player = $AnimationPlayer	
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera = $Camera3D
+@onready var hitbox = $Camera3D/weapon_pivot/weapon_mesh/Hitbox
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -37,3 +38,18 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+func _process(delta):
+	if Input.is_action_just_pressed("attack") and not anim_player.current_animation == "bs_attack":
+		anim_player.stop()
+		anim_player.play("bs_attack")
+		hitbox.monitoring = true
+		
+func _on_animation_player_animation_finished(anim_name):
+	if anim_name == "bs_attack":
+		anim_player.play("bs_idle")
+		hitbox.monitoring = false
+
+
+func _on_hitbox_area_entered(area):
+	if area.is_in_group("enemy"):
+		print("HIT")
