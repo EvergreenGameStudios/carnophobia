@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://csmg4ev41d4cc"]
+[gd_scene load_steps=6 format=3 uid="uid://csmg4ev41d4cc"]
 
 [ext_resource type="PackedScene" uid="uid://dnkrfnmia4v8p" path="res://Assets/Scenes/player.tscn" id="1_lpfbd"]
+[ext_resource type="PackedScene" uid="uid://dg66dsgl687kw" path="res://Assets/Scenes/enemy_1.tscn" id="2_jrj2n"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_hloyr"]
 turbidity = 0.0
@@ -44,3 +45,6 @@ size = Vector3(1.06982, 1, 1)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_lpfbd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08659, 1.7896, 0.101028)
+
+[node name="enemy1" parent="." instance=ExtResource("2_jrj2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.30524, 1.82437, -3.73922)
