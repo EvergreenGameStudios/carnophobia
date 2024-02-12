@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxxep88jiy1mn"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/UI/audio_slider_settings.gd" id="1_eigpx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hi00y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tqpy2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a237w"]
+
+[node name="Audio_Slider_Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eigpx")
+bus_name = "Master"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 42
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 175
+theme_override_styles/separator = SubResource("StyleBoxEmpty_hi00y")
+
+[node name="Audio_Name_LBL" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Master Volume"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tqpy2")
+
+[node name="HSlider" type="HSlider" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 32)
+layout_mode = 2
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.01
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_a237w")
+
+[node name="Audio_Num_LBL" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "100"

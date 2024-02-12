@@ -7,6 +7,7 @@ extends Control
 @onready var options_menu: options_menu = $Options
 @onready var label: Label = $Label
 @onready var vbox: VBoxContainer = $VBoxContainer
+@onready var animator: AnimationPlayer = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,10 +27,12 @@ func options_menu_pressed():
 	label.visible = false
 	vbox.visible = false
 	set_process(false)
+	animator.play("options_mm_open")
 	options_menu.visible = true
 	options_menu.set_process(true)
 	
 func on_exit_options_menu():
+	animator.play("options_mm_close")
 	options_menu.set_process(false)
 	options_menu.visible = false
 	label.visible = true

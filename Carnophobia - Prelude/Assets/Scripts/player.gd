@@ -8,6 +8,7 @@ extends CharacterBody3D
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera = $Camera3D
 @onready var hitbox = $Camera3D/weapon_pivot/weapon_mesh/Hitbox
+@onready var pause_menu = $pause_menu
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -18,7 +19,7 @@ func _unhandled_input(event):
 		camera.rotate_x(-event.relative.y * 0.005)
 		camera.rotation.x = clamp(camera.rotation.x, -(PI/4), (PI/4))
 	if event.is_action_pressed("menu"):
-		$pause_menu.pause()
+		pause_menu.pause()
 	
 func _physics_process(delta):
 	# Add the gravity.

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ylucjbsbycja"]
+
+[ext_resource type="FontFile" uid="uid://dhreb0e63kmd8" path="res://Assets/Textures/UI/Fonts/NIAGENG.TTF" id="1_pvfwh"]
+
+[resource]
+default_font = ExtResource("1_pvfwh")
+default_font_size = 40

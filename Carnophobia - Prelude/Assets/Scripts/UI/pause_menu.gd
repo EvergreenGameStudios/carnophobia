@@ -28,14 +28,16 @@ func pause():
 	
 func menuquit():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Assets/Scenes/main_menu.tscn")
+	get_tree().change_scene_to_file("res://Assets/Scenes/UI/main_menu.tscn")
 
 func options_menu_pressed():
+	animator.play("options_open")
 	set_process(false)
 	options_menu.visible = true
 	options_menu.set_process(true)
 	
 func on_exit_options_menu():
+	animator.play("options_close")
 	options_menu.set_process(false)
 	options_menu.visible = false
 	set_process(true)

@@ -1,0 +1,152 @@
+[gd_scene load_steps=10 format=3 uid="uid://bnjapus3x7dpo"]
+
+[ext_resource type="Script" path="res://Assets/Scripts/UI/main_menu.gd" id="1_mlpox"]
+[ext_resource type="Theme" uid="uid://baqkxg78ylid7" path="res://Assets/Textures/Themes/buttons.tres" id="2_gkxa1"]
+[ext_resource type="FontFile" uid="uid://dhreb0e63kmd8" path="res://Assets/Textures/UI/Fonts/NIAGENG.TTF" id="2_x3ljp"]
+[ext_resource type="AudioStream" uid="uid://bu514p8iowb2d" path="res://Assets/Sounds/main_menu_forest.ogg" id="2_y4nh8"]
+[ext_resource type="PackedScene" uid="uid://f3isjxjhlfue" path="res://Assets/Scenes/UI/options.tscn" id="5_c84li"]
+
+[sub_resource type="Animation" id="Animation_8mwm2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Options:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5v8dj"]
+resource_name = "options_mm_close"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_wtscs"]
+resource_name = "options_mm_open"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Options:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_64fgl"]
+_data = {
+"RESET": SubResource("Animation_8mwm2"),
+"options_mm_close": SubResource("Animation_5v8dj"),
+"options_mm_open": SubResource("Animation_wtscs")
+}
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mlpox")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 769.0
+offset_bottom = 291.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 24
+theme_override_fonts/font = ExtResource("2_x3ljp")
+theme_override_font_sizes/font_size = 256
+text = "Carnophobia"
+vertical_alignment = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -305.0
+offset_right = 358.0
+offset_bottom = -16.0
+grow_vertical = 0
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_gkxa1")
+text = "Play"
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_gkxa1")
+text = "Options"
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("2_gkxa1")
+text = "Quit"
+
+[node name="Options" parent="." instance=ExtResource("5_c84li")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_64fgl")
+}
+autoplay = "options_mm_close"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y4nh8")
+volume_db = -8.611
+autoplay = true
+bus = &"Music"

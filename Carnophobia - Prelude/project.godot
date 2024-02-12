@@ -11,12 +11,16 @@ config_version=5
 [application]
 
 config/name="Carnophobia - Prelude"
-run/main_scene="res://Assets/Scenes/main_menu.tscn"
+run/main_scene="res://Assets/Scenes/UI/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://Assets/Textures/icon.svg"
+
+[autoload]
+
+SettingsSignalBus="*res://Assets/Scripts/Autoload/SettingsSignalBus.gd"
 
 [input]
 
