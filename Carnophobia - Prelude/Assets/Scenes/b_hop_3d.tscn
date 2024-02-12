@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://cygwh5gr4sm"]
+
+[ext_resource type="Script" path="res://addons/bhop3d/src/bhop3d.gd" id="1_5hok5"]
+[ext_resource type="PackedScene" uid="uid://tg45vqsdk7hc" path="res://Assets/Scenes/UI/pause_menu.tscn" id="2_enw0j"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n50rg"]
+
+[node name="BHop3D" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00231493, 0.00626206, 0.00134468)
+script = ExtResource("1_5hok5")
+jump_when_held = true
+sensitivity = Vector2(0.3, 0.3)
+move_forward = "forward"
+move_backward = "backward"
+move_left = "left"
+move_right = "right"
+jump = "jump"
+ground_accelerate = 150.0
+bhop_frames = 1
+camera = NodePath("Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_n50rg")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7335, 0)
+
+[node name="pause_menu" parent="." instance=ExtResource("2_enw0j")]

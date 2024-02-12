@@ -18,9 +18,17 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="res://Assets/Textures/icon.svg"
 
-[autoload]
+[audio]
 
-SettingsSignalBus="*res://Assets/Scripts/Autoload/SettingsSignalBus.gd"
+buses/default_bus_layout="res://Assets/Sounds/default_bus_layout.tres"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/bhop3d/plugin.cfg")
 
 [input]
 
